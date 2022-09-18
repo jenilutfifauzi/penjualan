@@ -13,11 +13,19 @@
       </li>
 
       <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fas  fa-file-invoice-dollar"></i><span>Kelola Jenis Barang</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="<?php echo base_url('jenis/') ?>">Kelola Jenis Barang</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas  fa-file-invoice-dollar"></i><span>Kelola Barang</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="<?php echo base_url('barang/') ?>">Kelola Barang</a></li>
         </ul>
       </li>
+      
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas  fa-file-invoice-dollar"></i><span>Data Penjualan</span></a>
         <ul class="dropdown-menu">

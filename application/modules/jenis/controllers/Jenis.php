@@ -4,7 +4,7 @@ use LDAP\Result;
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Barang extends MY_Controller
+class Jenis extends MY_Controller
 {
 
   public function __construct()
@@ -13,20 +13,19 @@ class Barang extends MY_Controller
     // load session library
     $this->load->library('session');
     $this->load->helper('url');
-    $this->load->model(['M_barang','M_global']);
+    $this->load->model('M_jenis');
   }
 
   public function index()
   {
     $data = $this->session->userdata();
-    $data['title'] = 'Kelola Barang';
-    $data['data_jenis_barang'] = $this->M_global->data_jenis();
-    $data['data_barang'] = $this->M_barang->data_barang();
+    $data['title'] = 'Kelola Jenis Barang';
+    $data['data_jenis_barang'] = $this->M_jenis->data_jenis();
 
     $this->load->view('template/header', $data);
     $this->load->view('template/navbar', $data);
     $this->load->view('template/sidebar');
-    $this->load->view('index', $data);
+    $this->load->view('jenis_barang/index', $data);
     $this->load->view('template/footer');
   }
   public function aksi_tambah_jenis_brg()
