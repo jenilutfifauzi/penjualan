@@ -4,7 +4,7 @@ use LDAP\Result;
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Barang extends MY_Controller
+class Penjualan extends MY_Controller
 {
 
   public function __construct()
@@ -13,7 +13,7 @@ class Barang extends MY_Controller
     // load session library
     $this->load->library('session');
     $this->load->helper('url');
-    $this->load->model(['M_barang','M_global']);
+    $this->load->model(['M_penjualan','M_global']);
   }
 
   public function index()

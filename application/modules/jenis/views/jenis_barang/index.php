@@ -16,7 +16,10 @@
               <input type="text" class="form-control" id="jenis_brg" name="jenis_brg" required>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Simpan</button>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -49,7 +52,10 @@ foreach ($data_jenis_barang as $data) { ?>
                 <input type="text" class="form-control" id="jenis_brg" name="jenis_brg" value="<?= $data['nama_jenis_barang'] ?>" required>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -108,7 +114,7 @@ foreach ($data_jenis_barang as $data) { ?>
                               <div class="">
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal<?= $data['id_jenis'] ?>">
                                   Edit</button>
-                                  <a href="<?php echo base_url(); ?>jenis/aksi_delete_data/<?php echo $data['id_jenis']; ?>" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                <a href="<?php echo base_url(); ?>jenis/aksi_delete_data/<?php echo $data['id_jenis']; ?>" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
                               </div>
                             </td>
                           </tr>

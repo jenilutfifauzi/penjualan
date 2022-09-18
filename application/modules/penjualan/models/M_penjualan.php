@@ -1,23 +1,13 @@
 <?php 
  
-class M_global extends CI_Model{
-	public function data_barang()
+class M_barang extends CI_Model{
+	public function data_penjualan()
     {
 		$this->db->select('*');
-		$this->db->from('barang');
-		$this->db->join('jenis_barang','jenis_barang.id_jenis = barang.id_jenis','left');
+		$this->db->from('penjualan');
+		$this->db->join('barang','barang.id_barang = penjualan.id_barang','left');
 		$hasil= $this->db->get();
     	
-    	if ($hasil->num_rows() > 0){
-    		return $hasil->result_array();
-    	}else{
-    		return [];
-    	}
-    }
-
-	public function data_jenis()
-    {
-    	$hasil= $this->db->get('jenis_barang');
     	if ($hasil->num_rows() > 0){
     		return $hasil->result_array();
     	}else{

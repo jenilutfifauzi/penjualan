@@ -3,7 +3,11 @@
 class M_barang extends CI_Model{
 	public function data_barang()
     {
-    	$hasil= $this->db->get('barang');
+		$this->db->select('*');
+		$this->db->from('barang');
+		$this->db->join('jenis_barang','jenis_barang.id_jenis = barang.id_jenis','left');
+		$hasil= $this->db->get();
+    	
     	if ($hasil->num_rows() > 0){
     		return $hasil->result_array();
     	}else{
