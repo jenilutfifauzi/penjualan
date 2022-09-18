@@ -15,6 +15,19 @@ class M_global extends CI_Model{
     	}
     }
 
+	public function filter_jenis_barang()
+    {
+		$id = 1;
+		$tgl_awal = '2021-05-01';
+		$tgl_akhir = '2022-05-04';
+		$hasil = $this->db->query("Select Max(tb1.jml_terjual) as total from penjualan tb1 join barang tb2 on tb2.id_barang=tb1.id_barang Where tb2.id_jenis =".$id . " and tb1.tgl_transaksi between ".$tgl_awal." and ".$tgl_akhir."");
+	
+    	if ($hasil->num_rows() > 0){
+    		return $hasil->result_array();
+    	}else{
+    		return [];
+    	}
+    }
 	public function data_jenis()
     {
     	$hasil= $this->db->get('jenis_barang');

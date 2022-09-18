@@ -1,11 +1,12 @@
 <?php 
  
-class M_barang extends CI_Model{
+class M_penjualan extends CI_Model{
 	public function data_penjualan()
     {
 		$this->db->select('*');
-		$this->db->from('penjualan');
-		$this->db->join('barang','barang.id_barang = penjualan.id_barang','left');
+		$this->db->from('barang');
+		$this->db->join('jenis_barang','barang.id_jenis = jenis_barang.id_jenis','right');
+		$this->db->join('penjualan','barang.id_barang = penjualan.id_barang','right');
 		$hasil= $this->db->get();
     	
     	if ($hasil->num_rows() > 0){

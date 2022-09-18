@@ -29,7 +29,7 @@
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fas  fa-file-invoice-dollar"></i><span>Data Penjualan</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="<?php echo base_url('Wadir2/usulan_anggaran_thn') ?>">Data Penjualan</a></li>
+          <li><a class="nav-link" href="<?php echo base_url('penjualan/') ?>">Data Penjualan</a></li>
         </ul>
       </li>
 

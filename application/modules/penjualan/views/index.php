@@ -3,38 +3,40 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Barang</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Penjualan</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="<?= base_url('barang/aksi_tambah_barang') ?>" class="needs-validation">
-          <div class="form-group row">
-            <label for="nama_barang" class="col-sm-2 col-form-label">Barang</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="nama_barang" name="nama_barang" required>
-            </div>
-          </div>
+        <form method="POST" action="<?= base_url('penjualan/aksi_tambah_penjualan') ?>" class="needs-validation">
 
           <div class="form-group row">
             <label for="nama_barang" class="col-sm-2 col-form-label">Jenis Barang</label>
             <div class="col-sm-10">
-              <select name="jenis_barang" id="jenis_barang" class="form-control">
+              <select name="id_barang" id="id_barang" class="form-control">
                 <option value="#" class="form-control">Pilih</option>
-                <?php foreach ($data_jenis_barang as $data) { ?>
-                  <option value="<?= $data['id_jenis'] ?>" class="form-control"><?= $data['nama_jenis_barang'] ?></option>
+                <?php foreach ($data_barang as $data) { ?>
+                  <option value="<?= $data['id_barang'] ?>" class="form-control"><?= $data['nama_barang'] ?></option>
                 <?php } ?>
               </select>
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="stok" class="col-sm-2 col-form-label">Stok</label>
+            <label for="jml_terjual" class="col-sm-2 col-form-label">Jumlah Terjual</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="stok" name="stok" required>
+              <input type="text" class="form-control" id="jml_terjual" name="jml_terjual" required>
             </div>
           </div>
+
+          <div class="form-group row">
+            <label for="tgl_transaksi" class="col-sm-2 col-form-label">Tanggal Transaksi</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control" id="tgl_transaksi" name="tgl_transaksi" required>
+            </div>
+          </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -136,30 +138,36 @@ foreach ($data_barang as $data) { ?>
                     <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
                       Tambah
                     </button>
+                    <?= var_dump($filter) ?>
                     <table class="table table-striped table-bordered display nowrap" id="test">
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Barang</th>
-                          <th>Jenis Barang</th>
+                          <th>Nama Barang</th>
                           <th>Stok</th>
+                          <th>Jumlah Terjual</th>
+                          <th>Tanggal Transaksi</th>
+                          <th>Jenis Barang</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
                         $no = 1;
-                        foreach ($data_barang as $data) : ?>
+                        foreach ($data_penjualan as $data) : ?>
                           <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $data['nama_barang'] ?></td>
-                            <td><?= $data['nama_jenis_barang'] ?></td>
                             <td><?= $data['stok'] ?></td>
+                            <td><?= $data['jml_terjual'] ?></td>
+                            <td><?= date("d-m-Y",strtotime($data['tgl_transaksi'])) ?>
+                            </td>
+                            <td><?= $data['nama_jenis_barang'] ?></td>
                             <td>
                               <div class="">
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal<?= $data['id_barang'] ?>">
                                   Edit</button>
-                                <a href="<?php echo base_url(); ?>barang/aksi_delete_data/<?php echo $data['id_barang']; ?>" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                <a href="<?php echo base_url(); ?>penjualan/aksi_delete_data/<?php echo $data['id_penjualan']; ?>" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
                               </div>
                             </td>
                           </tr>
