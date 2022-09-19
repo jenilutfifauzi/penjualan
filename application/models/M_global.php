@@ -15,12 +15,45 @@ class M_global extends CI_Model{
     	}
     }
 
-	public function filter_jenis_barang()
+	public function filter_jenis_barang($id, $tgl_awal, $tgl_akhir)
     {
-		$id = 1;
-		$tgl_awal = '2021-05-01';
-		$tgl_akhir = '2022-05-04';
+		
 		$hasil = $this->db->query("Select Max(tb1.jml_terjual) as total from penjualan tb1 join barang tb2 on tb2.id_barang=tb1.id_barang Where tb2.id_jenis =".$id . " and tb1.tgl_transaksi between ".$tgl_awal." and ".$tgl_akhir."");
+	
+    	if ($hasil->num_rows() > 0){
+    		return $hasil->result_array();
+    	}else{
+    		return [];
+    	}
+    }
+	public function filter_data($id, $tgl_awal, $tgl_akhir)
+    {
+		
+		$hasil = $this->db->query("Select (*) from penjualan tb1 join barang tb2 on tb2.id_barang=tb1.id_barang Where tb2.id_jenis =".$id . " and tb1.tgl_transaksi between ".$tgl_awal." and ".$tgl_akhir."");
+	
+    	if ($hasil->num_rows() > 0){
+    		return $hasil->result_array();
+    	}else{
+    		return [];
+    	}
+    }
+	public function filter_data2($id, $tgl_awal, $tgl_akhir)
+    {
+		
+		$this->db->select('*');
+		$this->db->from('barang');
+		$this->db->join('jenis_barang','barang.id_jenis = jenis_barang.id_jenis','right');
+		$this->db->join('penjualan','barang.id_barang = penjualan.id_barang','right');
+		$this->db->where('barang.id_jenis',$id);
+		$this->db->where('penjualan.tgl_transaksi BETWEEN "'. date('Y-m-d', strtotime($tgl_awal)). '" and "'. date('Y-m-d', strtotime($tgl_akhir)).'"');
+		$this->db->order_by("penjualan.jml_terjual","desc");
+		$hasil= $this->db->get();
+    	
+    	if ($hasil->num_rows() > 0){
+    		return $hasil->result_array();
+    	}else{
+    		return [];
+    	}
 	
     	if ($hasil->num_rows() > 0){
     		return $hasil->result_array();

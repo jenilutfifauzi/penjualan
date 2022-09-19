@@ -168,6 +168,7 @@ foreach ($data_penjualan as $data) { ?>
 
                         <div class="col-auto">
                           <button type="submit" class="btn btn-primary">Filter</button>
+                          <a href="<?php echo base_url(); ?>penjualan/" class="btn btn-warning">Close</a>
                         </div>
                       </div>
                     </form>
@@ -188,7 +189,7 @@ foreach ($data_penjualan as $data) { ?>
                       <tbody>
                         <?php
                         $no = 1;
-                        foreach ($data_penjualan as $data) : ?>
+                        foreach ($data_filter as $data) : ?>
                           <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $data['nama_barang'] ?></td>

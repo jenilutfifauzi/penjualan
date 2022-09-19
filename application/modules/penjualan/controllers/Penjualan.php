@@ -19,10 +19,11 @@ class Penjualan extends MY_Controller
   public function index()
   {
     $data = $this->session->userdata();
-    $data['title'] = 'Kelola Barang';
+    $data['title'] = 'Kelola data penjualan';
     $data['data_barang'] = $this->M_global->data_barang();
+    $data['data_jenis'] = $this->M_global->data_jenis();
     $data['data_penjualan'] = $this->M_penjualan->data_penjualan();
-    $data['filter'] = $this->M_global->filter_jenis_barang();
+    
 
     $this->load->view('template/header', $data);
     $this->load->view('template/navbar', $data);
@@ -87,5 +88,25 @@ class Penjualan extends MY_Controller
     redirect('penjualan/');
   }
 
+  public function filter()
+  {
+
+    $id = $this->input->post('id_jenis');
+    $tgl_awal = $this->input->post('tgl_awal');
+    $tgl_akhir = $this->input->post('tgl_akhir');
+
+    $data['title'] = 'Kelola data penjualan';
+    $data['data_barang'] = $this->M_global->data_barang();
+    $data['data_jenis'] = $this->M_global->data_jenis();
+    $data['data_penjualan'] = $this->M_penjualan->data_penjualan();
+
+    $data['data_filter'] = $this->M_global->filter_data2($id,$tgl_awal,$tgl_akhir);
+     
+    $this->load->view('template/header', $data);
+    $this->load->view('template/navbar', $data);
+    $this->load->view('template/sidebar');
+    $this->load->view('filter', $data);
+    $this->load->view('template/footer');
+  }
 
 }
