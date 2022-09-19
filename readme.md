@@ -6,10 +6,11 @@
 - Datatable
 
 ### Penggunaan
-- Buat Categories
-- Buat Variants
-- Buat Product (pilih categories dan variants)
-- Buat Product Images 
+- Download file project
+- Buat db mysql dengan nama db_penjualan
+- Import db ke mysql di folder DATABASE
+- Jalankan
+
 
 ### Fitur
 - Kelola jenis barang
