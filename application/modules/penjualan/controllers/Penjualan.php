@@ -50,28 +50,29 @@ class Penjualan extends MY_Controller
     redirect('penjualan/');
   }
 
-  public function aksi_update_barang()
+  public function aksi_update_penjualan()
   {
-    $id_brg = $this->input->post('id_barang');
-    $nama_barang = $this->input->post('nama_barang');
-    $jenis_barang = $this->input->post('jenis_barang');
-    $stok = $this->input->post('stok');
+    $id_penjualan = $this->input->post('id_penjualan');
+    $id_barang = $this->input->post('id_barang');
+    $jml_terjual = $this->input->post('jml_terjual');
+    $tgl_transaksi = $this->input->post('tgl_transaksi');
+
 
     $where = [
-        'id_barang' =>$id_brg,
+        'id_penjualan' =>$id_penjualan,
     ];
 
     $data = [
-        'nama_barang' => $nama_barang,
-        'id_jenis' => $jenis_barang,
-        'stok' => $stok,
+        'id_barang' => $id_barang,
+        'jml_terjual' => $jml_terjual,
+        'tgl_transaksi' => $tgl_transaksi,
     ];
 
-    $this->M_penjualan->update_data($where, $data, 'barang');
+    $this->M_penjualan->update_data($where, $data, 'penjualan');
     echo $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        Data Barang Berhasil Diupdate <button type= "button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
+        Data Penjualan Berhasil Diupdate <button type= "button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>
         </div>');
-    redirect('barang/');
+    redirect('penjualan/');
   }
 
   public function aksi_delete_data($id)

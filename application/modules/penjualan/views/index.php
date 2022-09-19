@@ -57,13 +57,15 @@ foreach ($data_penjualan as $data) { ?>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editModalLabel">Edit Barang</h5>
+          <h5 class="modal-title" id="editModalLabel">Edit Penjualan</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="<?= base_url('barang/aksi_update_barang') ?>" class="needs-validation">
+          <form method="POST" action="<?= base_url('penjualan/aksi_update_penjualan') ?>" class="needs-validation">
+
+          <input type="hidden" class="form-control" id="id_penjualan" name="id_penjualan" value="<?= $data['id_penjualan'] ?>" required>
 
             <div class="form-group row">
               <label for="nama_barang" class="col-sm-2 col-form-label">Jenis Barang</label>
