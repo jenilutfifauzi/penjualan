@@ -65,7 +65,7 @@ foreach ($data_penjualan as $data) { ?>
         <div class="modal-body">
           <form method="POST" action="<?= base_url('penjualan/aksi_update_penjualan') ?>" class="needs-validation">
 
-          <input type="hidden" class="form-control" id="id_penjualan" name="id_penjualan" value="<?= $data['id_penjualan'] ?>" required>
+            <input type="hidden" class="form-control" id="id_penjualan" name="id_penjualan" value="<?= $data['id_penjualan'] ?>" required>
 
             <div class="form-group row">
               <label for="nama_barang" class="col-sm-2 col-form-label">Jenis Barang</label>
@@ -141,10 +141,10 @@ foreach ($data_penjualan as $data) { ?>
 
                     <!-- //filter -->
                     <form action="<?= base_url('penjualan/filter') ?>" method="POST">
-                      <div class="form-row align-items-center">
+                      <div class="form-row align-items-center mb-3">
                         <div class="col-auto my-1">
                           <div class="custom-control mr-sm-2">
-                            <label class="  control-label">Filter data</label>
+                            <label class="  control-label"></label>
                           </div>
                         </div>
 
@@ -159,6 +159,15 @@ foreach ($data_penjualan as $data) { ?>
                         </div>
 
                         <div class="col-auto my-1">
+                          <label class="mr-sm-2 " for="inlineFormCustomSelect">Filter Jumlah Terjual</label>
+                          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="filter_jml_terjual">
+                            <option selected>Pilih...</option>
+                            <option value="desc">Terbanyak</option>
+                            <option value="asc">Terendah</option>
+                          </select>
+                        </div>
+
+                        <div class="col-auto my-1">
                           <label class="mr-sm-2 " for="inlineFormCustomSelect">Tanggal awal</label>
                           <input type="date" class="form-control" id="tgl_awal" name="tgl_awal" required>
                         </div>
@@ -168,14 +177,15 @@ foreach ($data_penjualan as $data) { ?>
                           <input type="date" class="form-control" id="tgl_akhir" name="tgl_akhir" required>
                         </div>
 
-                        <div class="col-auto">
+                        <div class="col-auto my-1 mt-4">
+                        <label class="mr-sm-2 " for="inlineFormCustomSelect"></label>
                           <button type="submit" class="btn btn-primary">Filter</button>
                           <a href="<?php echo base_url(); ?>penjualan/" class="btn btn-warning">Close</a>
                         </div>
                       </div>
                     </form>
                     <!-- end  -->
-             
+
                     <table class="table table-striped table-bordered display nowrap" id="test">
                       <thead>
                         <tr>

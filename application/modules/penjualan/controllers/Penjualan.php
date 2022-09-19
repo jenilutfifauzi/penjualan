@@ -95,13 +95,14 @@ class Penjualan extends MY_Controller
     $id = $this->input->post('id_jenis');
     $tgl_awal = $this->input->post('tgl_awal');
     $tgl_akhir = $this->input->post('tgl_akhir');
+    $filter_jml_terjual = $this->input->post('filter_jml_terjual');
 
     $data['title'] = 'Kelola data penjualan';
     $data['data_barang'] = $this->M_global->data_barang();
     $data['data_jenis'] = $this->M_global->data_jenis();
     $data['data_penjualan'] = $this->M_penjualan->data_penjualan();
 
-    $data['data_filter'] = $this->M_global->filter_data2($id,$tgl_awal,$tgl_akhir);
+    $data['data_filter'] = $this->M_global->filter_data2($id,$tgl_awal,$tgl_akhir,$filter_jml_terjual);
      
     $this->load->view('template/header', $data);
     $this->load->view('template/navbar', $data);

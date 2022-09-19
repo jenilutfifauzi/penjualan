@@ -37,7 +37,7 @@ class M_global extends CI_Model{
     		return [];
     	}
     }
-	public function filter_data2($id, $tgl_awal, $tgl_akhir)
+	public function filter_data2($id, $tgl_awal, $tgl_akhir, $filter_jml_terjual)
     {
 		
 		$this->db->select('*');
@@ -46,7 +46,7 @@ class M_global extends CI_Model{
 		$this->db->join('penjualan','barang.id_barang = penjualan.id_barang','right');
 		$this->db->where('barang.id_jenis',$id);
 		$this->db->where('penjualan.tgl_transaksi BETWEEN "'. date('Y-m-d', strtotime($tgl_awal)). '" and "'. date('Y-m-d', strtotime($tgl_akhir)).'"');
-		$this->db->order_by("penjualan.jml_terjual","desc");
+		$this->db->order_by("penjualan.jml_terjual",$filter_jml_terjual);
 		$hasil= $this->db->get();
     	
     	if ($hasil->num_rows() > 0){
