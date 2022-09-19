@@ -4,6 +4,7 @@
 
 ### Package yang dipakai
 - Datatable
+- Codeigniter HMVC
 
 ### Penggunaan
 - Download file project
